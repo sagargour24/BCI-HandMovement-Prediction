@@ -109,15 +109,3 @@ EEG waveforms for a few trials where predictions are incorrect:
 For feedback or questions, please open an issue on this repository.
 
 ---
-
-### ✅ Image File Mapping (Rename Your Files to These)
-
-Place these renamed files in an `images/` folder:
-
-| Current Filename                          | Rename to                          |
-|-------------------------------------------|------------------------------------|
-| `IMG-20250522-WA0001.jpg`                 | `predicted_labels_all_trials.jpg`  |
-| `IMG-20250522-WA0002.jpg`                 | `sample_correct_predictions.jpg`   |
-| `IMG-20250522-WA0003.jpg`                 | `sample_incorrect_predictions.jpg` |
-| `IMG-20250522-WA0004.jpg`                 | `model_architecture.jpg`           |
-| `IMG-20250522-WA0006.jpg`                 | `label_distribution.jpg`           |
