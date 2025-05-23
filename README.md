@@ -1,29 +1,123 @@
-# Motor Imagery Classification for Brain-Computer Interfaces
+# EEG-Based Motor Imagery Classification
 
-![Project Banner](bci.jpg)
+This project involves using deep learning techniques to classify motor imagery EEG signals (left vs. right hand movement imagery) using a convolutional neural network (CNN). The model predicts motor intent from EEG data and is evaluated on a test dataset.
 
-## Overview
-This project, **Motor Imagery Classification for Brain-Computer Interfaces Using EEGNetv4**, focuses on decoding electroencephalogram (EEG) signals to predict imagined hand movements (left vs. right). By leveraging the **EEGNetv4** model, a compact convolutional neural network (CNN), the project aims to advance Brain-Computer Interface (BCI) systems for applications in assistive technology, neurorehabilitation, and human-computer interaction.
+---
 
-The project uses the **BCI Competition IV Dataset 1**, which contains EEG recordings from subjects performing motor imagery tasks. The model is trained to classify left-hand vs. right-hand movements, handling challenges like noisy EEG signals and class imbalance using class weights. Performance is evaluated through accuracy, confusion matrices, and visualizations of predicted labels and EEG signals.
+## 🧠 Project Overview
 
-## Features
-- **EEGNetv4 Model**: A lightweight CNN designed for EEG signal classification, capturing spatial and temporal features.
-- **Dataset**: BCI Competition IV Dataset 1 with EEG data sampled at 1000 Hz.
-- **Preprocessing**: EEG signal filtering, segmentation, and normalization for robust feature extraction.
-- **Evaluation**: Metrics include accuracy, confusion matrices, and visualizations (scatter plots, histograms, and EEG signal plots).
-- **Applications**: Potential use in voice-based authentication, customer service automation, speech assessment, and healthcare monitoring (adapted from voice classification insights).
+Electroencephalography (EEG) signals are used to interpret motor intentions in brain-computer interface (BCI) applications. This project aims to:
 
-## Dataset
-The **BCI Competition IV Dataset 1** includes:
-- EEG recordings from multiple subjects performing left-hand and right-hand motor imagery tasks.
-- Calibration (training) and evaluation (testing) data.
-- 1000 Hz sampling frequency with multiple channels, focusing on motor cortex-related channels (e.g., C3, Cz, C4).
+- Preprocess EEG data  
+- Train a deep CNN model  
+- Classify motor imagery (left vs. right)  
+- Visualize model predictions and performance  
 
-## Installation
-To run this project locally, follow these steps:
+---
 
-1. **Clone the Repository**:
-   ```bash
-   git clone https://github.com/your-username/motor-imagery-bci.git
-   cd motor-imagery-bci
+## 🗃️ Dataset
+
+- Input shape: `(n_channels, n_times)` per trial  
+- Channels used: `ch3`, `ch4`, `ch5`  
+- Labels:  
+  - `0` = Left imagery  
+  - `1` = Right imagery  
+- Data is structured into trials with temporal sequences  
+
+---
+
+## 🧠 Model Architecture
+
+The deep learning architecture consists of temporal and spatial convolutional layers followed by pooling, dropout, and a dense classification layer.
+
+<p align="center">
+  <img src="images/model_architecture.jpg" alt="Model Architecture" width="250">
+</p>
+
+---
+
+## 📊 Results & Visualizations
+
+### Label Distribution
+
+Distribution of predicted labels on the evaluation dataset:
+
+<p align="center">
+  <img src="images/label_distribution.jpg" alt="Label Distribution" width="400">
+</p>
+
+---
+
+### Predicted Labels Across All Trials
+
+Visualizing all predicted labels against trial numbers:
+
+<p align="center">
+  <img src="images/predicted_labels_all_trials.jpg" alt="All Predicted Labels" width="600">
+</p>
+
+---
+
+### Sample Trial Predictions (Correct)
+
+EEG waveforms for a few trials where predictions match the true labels:
+
+<p align="center">
+  <img src="images/sample_correct_predictions.jpg" alt="Correct Predictions" width="700">
+</p>
+
+---
+
+### Sample Trial Predictions (Incorrect)
+
+EEG waveforms for a few trials where predictions are incorrect:
+
+<p align="center">
+  <img src="images/sample_incorrect_predictions.jpg" alt="Incorrect Predictions" width="900">
+</p>
+
+---
+
+## 📂 Files
+
+- `EEG.ipynb`: Jupyter notebook with data processing, model training, evaluation, and visualization  
+- `images/`: Contains all the result and architecture images
+
+---
+
+## 🚀 How to Run
+
+1. Clone this repository  
+2. Open `EEG.ipynb` in Jupyter Notebook or Google Colab  
+3. Run all cells to:
+   - Preprocess EEG data  
+   - Train the CNN  
+   - Evaluate predictions  
+
+---
+
+## 🧪 Future Work
+
+- Add more EEG channels or frequency-domain features  
+- Explore transformer or attention-based models  
+- Integrate for real-time BCI feedback  
+
+---
+
+## 📬 Contact
+
+For feedback or questions, please open an issue on this repository.
+
+---
+
+### ✅ Image File Mapping (Rename Your Files to These)
+
+Place these renamed files in an `images/` folder:
+
+| Current Filename                          | Rename to                          |
+|-------------------------------------------|------------------------------------|
+| `IMG-20250522-WA0001.jpg`                 | `predicted_labels_all_trials.jpg`  |
+| `IMG-20250522-WA0002.jpg`                 | `sample_correct_predictions.jpg`   |
+| `IMG-20250522-WA0003.jpg`                 | `sample_incorrect_predictions.jpg` |
+| `IMG-20250522-WA0004.jpg`                 | `model_architecture.jpg`           |
+| `IMG-20250522-WA0006.jpg`                 | `label_distribution.jpg`           |
